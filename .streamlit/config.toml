@@ -1,22 +1,22 @@
 [theme]
-primaryColor = "#23272a"
-backgroundColor = "#2c2f33"
-secondaryBackgroundColor = "#3e4043"
-textColor = "#FFFFFF"
+primaryColor = "#2E86C1"
+backgroundColor = "#F2F2F2"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#333333"
 font = "sans-serif"
 
 [theme.sidebar]
-backgroundColor = "#23272a"
+backgroundColor = "#2E86C1"
 textColor = "#FFFFFF"
 font = "sans-serif"
 
 [theme.topBar]
-backgroundColor = "#2c2f33"
-textColor = "#FFFFFF"
+backgroundColor = "#FFFFFF"
+textColor = "#2E86C1"
 font = "sans-serif"
 
 [theme.button]
-backgroundColor = "#1abc9c"
+backgroundColor = "#2E86C1"
 textColor = "#FFFFFF"
 font = "sans-serif"
 
