@@ -43,10 +43,10 @@ def main():
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        st.write(' ')
+        st.image(image_logo_large,width=700)
 
     with col2:
-        st.image(image_logo_large,width=400)
+        st.write(' ')
 
     with col3:
 
@@ -54,11 +54,11 @@ def main():
     with col4:
         st.write(' ')
     # st.markdown("<h1 style='text-align: center; font-family: Helvetica; color: #00ff22;'>Head Hunter</h1>", unsafe_allow_html=True)
-    image_logo = Image.open('/Users/justinpak/code/justinpakzad/head_hunter_frontend/hh icon no bg.png')
+    # image_logo = Image.open('/Users/justinpak/code/justinpakzad/head_hunter_frontend/hh icon no bg.png')
     image_logo_large = Image.open('/Users/justinpak/code/justinpakzad/head_hunter_frontend/hh logo no bg.png')
-    st.image(image_logo,width=100)
     # st.markdown('Counting crowds with confidence since 2023.')
-    st.markdown("<h6 style='text-align: center; font-family: Helvetica; color: #01010;'>Counting crowds with confidence since 2023.</h6>", unsafe_allow_html=True)
+    st.markdown("---")
+    st.markdown("<h6 style='text-align: center; font-family: Lato; color: #ECB056;'>Counting crowds with confidence since 2023.</h6>", unsafe_allow_html=True)
     st.markdown("---")
     st.write("Upload a photo of your crowd here")
 
@@ -94,8 +94,6 @@ def main():
             if st.button("Predict Please...."):
                 with st.spinner('Detecting Humans......'):
                     load_images(cv_image, confidence_threshold, overlap_threshold)
-
-
 
 if __name__ == '__main__':
     main()
