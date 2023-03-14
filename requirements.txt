@@ -1,0 +1,9 @@
+numpy
+opencv-python-headless
+pandas
+db-dtypes
+pyarrow
+python-multipart
+psycopg2-binary
+httpx
+roboflow
