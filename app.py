@@ -34,7 +34,7 @@ def load_images(cv_image, confidence_threshold, overlap_threshold):
         top_ly = ymin + prediction['height'] /2
         bottom_lx = xmin - prediction['width'] /2
         bottom_ly = ymin - prediction['height'] /2
-        draw.rectangle(((top_lx, top_ly), (bottom_lx, bottom_ly)), outline='green', width=6)
+        draw.rectangle(((top_lx, top_ly), (bottom_lx, bottom_ly)), outline='electric green', width=6)
         draw.text((bottom_lx, bottom_ly), label, fill='white')
     st.image(pil_img_with_boxes)
 
