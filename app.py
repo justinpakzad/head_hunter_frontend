@@ -44,30 +44,37 @@ def main():
     st.markdown('Counting crowds with confidence since 2023.')
     st.markdown("---")
 
-
+    page = st.sidebar.radio('',('Upload Photo','Take A Photo'))
     confidence_threshold = st.sidebar.slider('Confidence threshold:', 0.0, 1.0, 0.3, 0.01)
     overlap_threshold = st.sidebar.slider('Overlap threshold:', 0.0, 1.0, 0.5, 0.01)
-    
+    if page == 'Upload Photo':
+        img_file_buffer = st.file_uploader('')
 
+        if img_file_buffer is not None:
+            img_bytes = img_file_buffer.getvalue()
+            # Load uploaded image
+            pil_image = Image.open(io.BytesIO(img_bytes))
+            cv_image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
+            st.image(pil_image)
+            if st.button("Predict Please...."):
+                with st.spinner('Detecting Humans......'):
+                    time.sleep(10)
+                load_images(cv_image, confidence_threshold, overlap_threshold)
 
-    img_file_buffer = st.file_uploader('')
+    if page == 'Take A Photo':
+        img_file_buffer = st.camera_input('Say Cheese')
 
+        if img_file_buffer is not None:
+            img_bytes = img_file_buffer.getvalue()
+            # Load uploaded image
+            pil_image = Image.open(io.BytesIO(img_bytes))
+            cv_image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
+            st.image(pil_image)
+            if st.button("Predict Please...."):
+                with st.spinner('Detecting Humans......'):
+                    time.sleep(10)
+                load_images(cv_image, confidence_threshold, overlap_threshold)
 
-    if img_file_buffer is not None:
-        img_bytes = img_file_buffer.getvalue()
-        # Load uploaded image
-        pil_image = Image.open(io.BytesIO(img_bytes))
-        cv_image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
-        st.image(pil_image)
-        if st.button("Predict Please...."):
-            with st.spinner('Detecting Humans......'):
-                time.sleep(10)
-            load_images(cv_image, confidence_threshold, overlap_threshold)
-
-        # pil_image = Image.open(io.BytesIO(r.content))
-        # cv_image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
-
-        # st.image(cv_image, caption='Image with bounding boxes')
 
 
 if __name__ == '__main__':
