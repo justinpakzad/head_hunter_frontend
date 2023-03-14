@@ -1,17 +1,12 @@
 import streamlit as st
-from PIL import Image, ImageDraw,ImageFont
-import requests
-import os
-import glob
+from PIL import Image, ImageDraw
 import cv2
-import random
-from roboflow import Roboflow ###
+from roboflow import Roboflow
 import io
-import base64
 import time
 import numpy as np
-import matplotlib as plt
-# ︻デ═一
+
+
 
 url = 'https://detect.roboflow.com/crowd_counting/12'
 
