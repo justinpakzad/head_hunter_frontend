@@ -57,8 +57,7 @@ def main():
         # Load uploaded image
         pil_image = Image.open(io.BytesIO(img_bytes))
         cv_image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
-
-        st.image(pil_image)
+        st.image(cv_image)
         if st.button("Predict Please...."):
             with st.spinner('Detecting Humans......'):
                 time.sleep(10)
