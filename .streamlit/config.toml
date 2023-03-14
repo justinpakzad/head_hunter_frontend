@@ -1,2 +1,36 @@
 [theme]
-base="light"
+primaryColor = "#2C3E50"
+backgroundColor = "#F8F8F8"
+secondaryBackgroundColor = "#EEEEEE"
+textColor = "#333333"
+font = "sans-serif"
+
+[theme.sidebar]
+backgroundColor = "#2C3E50"
+textColor = "#FFFFFF"
+font = "sans-serif"
+
+[theme.topBar]
+backgroundColor = "#FFFFFF"
+textColor = "#2C3E50"
+font = "sans-serif"
+
+[theme.button]
+backgroundColor = "#2C3E50"
+textColor = "#FFFFFF"
+font = "sans-serif"
+
+[theme.error]
+backgroundColor = "#FF0000"
+textColor = "#FFFFFF"
+font = "sans-serif"
+
+[theme.success]
+backgroundColor = "#32CD32"
+textColor = "#FFFFFF"
+font = "sans-serif"
+
+[theme.warning]
+backgroundColor = "#FFA500"
+textColor = "#FFFFFF"
+font = "sans-serif"
