@@ -20,7 +20,8 @@ model = project.version(14).model
 def load_images(cv_image, confidence_threshold, overlap_threshold):
     # Make prediction using Roboflow API
     robo_prediction = model.predict(cv_image, confidence=confidence_threshold*100, overlap=overlap_threshold*100).json()
-    st.write(f'Our system detects {len(robo_prediction["predictions"])} humans in this photo')
+   #st.write(f'Our system detects {len(robo_prediction["predictions"])} humans in this photo')
+    st.markdown(f'##Our system detects {len(robo_prediction["predictions"])} humans in this photo')
     pil_img_with_boxes = Image.fromarray(cv2.cvtColor(cv_image, cv2.COLOR_BGR2RGB))
     draw = ImageDraw.Draw(pil_img_with_boxes)
 
