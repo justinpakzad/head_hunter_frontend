@@ -16,7 +16,6 @@ project = rf.workspace().project('crowd_counting')
 model = project.version(14).model
 
 
-
 def load_images(cv_image, confidence_threshold, overlap_threshold):
     # Make prediction using Roboflow API
     robo_prediction = model.predict(cv_image, confidence=confidence_threshold*100, overlap=overlap_threshold*100).json()
@@ -40,10 +39,32 @@ def load_images(cv_image, confidence_threshold, overlap_threshold):
 
 
 def main():
-    st.header('Head Hunter')
-    st.markdown('Counting crowds with confidence since 2023.')
-    st.markdown("---")
+    image_logo_large = Image.open('/Users/justinpak/code/justinpakzad/head_hunter_frontend/hh logo no bg.png')
+    col1, col2, col3, col4 = st.columns(4)
 
+    with col1:
+        st.write(' ')
+
+    with col2:
+        st.image(image_logo_large,width=400)
+
+    with col3:
+
+        st.write(' ')
+    with col4:
+        st.write(' ')
+    # st.markdown("<h1 style='text-align: center; font-family: Helvetica; color: #00ff22;'>Head Hunter</h1>", unsafe_allow_html=True)
+    image_logo = Image.open('/Users/justinpak/code/justinpakzad/head_hunter_frontend/hh icon no bg.png')
+    image_logo_large = Image.open('/Users/justinpak/code/justinpakzad/head_hunter_frontend/hh logo no bg.png')
+    st.image(image_logo,width=100)
+    # st.markdown('Counting crowds with confidence since 2023.')
+    st.markdown("<h6 style='text-align: center; font-family: Helvetica; color: #01010;'>Counting crowds with confidence since 2023.</h6>", unsafe_allow_html=True)
+    st.markdown("---")
+    st.write("Upload a photo of your crowd here")
+
+    st.sidebar.header("Settings")
+
+    # st.sidebar.header("Settings")
     page = st.sidebar.radio('',('Upload Photo','Take A Photo'))
     confidence_threshold = st.sidebar.slider('Confidence threshold:', 0.0, 1.0, 0.3, 0.01)
     overlap_threshold = st.sidebar.slider('Overlap threshold:', 0.0, 1.0, 0.5, 0.01)
@@ -72,8 +93,7 @@ def main():
             # st.image(pil_image)
             if st.button("Predict Please...."):
                 with st.spinner('Detecting Humans......'):
-                    time.sleep(10)
-                load_images(cv_image, confidence_threshold, overlap_threshold)
+                    load_images(cv_image, confidence_threshold, overlap_threshold)
 
 
 
