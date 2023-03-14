@@ -39,7 +39,7 @@ def load_images(cv_image, confidence_threshold, overlap_threshold):
 
 
 def main():
-    image_logo_large = Image.open('hh logo no bg.png')
+    image_logo_large = Image.open('images/hh logo no bg.png')
     col1, col2, col3, col4 = st.columns(4)
     with col1:
         st.image(image_logo_large,width=700)
@@ -53,7 +53,8 @@ def main():
     # image_logo = Image.open('/Users/justinpak/code/justinpakzad/head_hunter_frontend/hh icon no bg.png')
     # st.markdown('Counting crowds with confidence since 2023.')
     st.markdown("---")
-    st.markdown("<h6 style='text-align: center; font-family: Lato; color: #ECB056;'>Counting crowds with confidence since 2023.</h6>", unsafe_allow_html=True)
+    st.markdown("<h6 style='text-align: center; font-family: Roboto !important; color: #ECB056;'>Counting crowds with confidence since 2023.</h6>", unsafe_allow_html=True)
+
     st.markdown("---")
     st.write("Upload a photo of your crowd here")
 
