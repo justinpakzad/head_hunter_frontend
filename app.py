@@ -47,7 +47,7 @@ def main():
 
     confidence_threshold = st.sidebar.slider('Confidence threshold:', 0.0, 1.0, 0.3, 0.01)
     overlap_threshold = st.sidebar.slider('Overlap threshold:', 0.0, 1.0, 0.5, 0.01)
-    camera = st.sidebar.camera_input()
+    camera = st.sidebar.camera_input('Take A Picture')
 
 
     img_file_buffer = st.file_uploader('')
