@@ -18,10 +18,10 @@ model = project.version(14).model
 def load_images(cv_image, confidence_threshold, overlap_threshold):
     # Make prediction using Roboflow API
     robo_prediction = model.predict(cv_image, confidence=confidence_threshold*100, overlap=overlap_threshold*100).json()
-    st.write(f'Our system detects {len(robo_prediction["predictions"])} humans in this photo')
+    st.markdown(f'<p style="font-size:25px; font-family: Sofia Pro"> {len(robo_prediction["predictions"])} people is our count</p>', unsafe_allow_html=True)
     pil_img_with_boxes = Image.fromarray(cv2.cvtColor(cv_image, cv2.COLOR_BGR2RGB))
     draw = ImageDraw.Draw(pil_img_with_boxes)
-
+    img_width = cv_image.shape[0]
     for prediction in robo_prediction['predictions']:
         prediction['class'] = 'Person'
         label = prediction['class']
@@ -33,9 +33,10 @@ def load_images(cv_image, confidence_threshold, overlap_threshold):
         top_ly = ymin + prediction['height'] /2
         bottom_lx = xmin - prediction['width'] /2
         bottom_ly = ymin - prediction['height'] /2
-        draw.rectangle(((top_lx, top_ly), (bottom_lx, bottom_ly)), outline='#00ff22', width=6)
+
+        draw.rectangle(((top_lx, top_ly), (bottom_lx, bottom_ly)), outline='#00ff22', width=int(img_width  * 0.008))
         font = ImageFont.truetype(font_path, size=int(width * 0.3))
-        draw.text((bottom_lx, bottom_ly), label, fill='#00ff22',font=font)
+        draw.text((bottom_lx, bottom_ly), label, fill='white',font=font)
     st.image(pil_img_with_boxes)
 
 
@@ -92,8 +93,8 @@ def main():
             pil_image = Image.open(io.BytesIO(img_bytes))
             cv_image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
             # st.image(pil_image)
-            if st.button("Predict Please...."):
-                with st.spinner('Detecting Humans......'):
+            if st.button("Predict..."):
+                with st.spinner('Hunting heads...'):
                     load_images(cv_image, confidence_threshold, overlap_threshold)
 
 if __name__ == '__main__':
