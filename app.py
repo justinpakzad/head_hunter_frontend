@@ -54,12 +54,12 @@ def main():
     # image_logo = Image.open('/Users/justinpak/code/justinpakzad/head_hunter_frontend/hh icon no bg.png')
     # st.markdown('Counting crowds with confidence since 2023.')
     st.markdown("---")
-    st.markdown("<h4 style='text-align: center; font-family: Playfair Display, serif; color: #ECB056;'>Counting crowds with confidence since 2023.</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center; color: #ECB056; font-family: Ubuntu;'>Counting crowds with confidence since 2023.</h4>", unsafe_allow_html=True)
 
-
-
+# ECB056
     st.markdown("---")
-    st.write("Upload a photo of your crowd here")
+    st.markdown("<b1 style='text-align: left; font-family: Ubuntu; color: white;'>Upload a photo of your crowd here</b1>", unsafe_allow_html=True)
+    # st.write("Upload a photo of your crowd here")
 
     st.sidebar.header("Settings")
 
@@ -76,8 +76,8 @@ def main():
             pil_image = Image.open(io.BytesIO(img_bytes))
             cv_image = cv2.cvtColor(np.array(pil_image), cv2.COLOR_RGB2BGR)
             st.image(pil_image)
-            if st.button("Predict Please...."):
-                with st.spinner('Detecting Humans......'):
+            if st.button("Predict"):
+                with st.spinner('Hunting heads...'):
                     load_images(cv_image, confidence_threshold, overlap_threshold)
 
     if page == 'Take A Photo':
