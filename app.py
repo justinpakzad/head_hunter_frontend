@@ -1,13 +1,12 @@
 import streamlit as st
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw,ImageFont
 import cv2
 from roboflow import Roboflow
 import io
 import time
 import numpy as np
-
-
-
+font_path = '/System/Library/Fonts/Supplemental/Arial.ttf'
+font = ImageFont.truetype(font_path, size=36)
 url = 'https://detect.roboflow.com/crowd_counting/12'
 
 # Hello World
@@ -24,6 +23,7 @@ def load_images(cv_image, confidence_threshold, overlap_threshold):
     draw = ImageDraw.Draw(pil_img_with_boxes)
 
     for prediction in robo_prediction['predictions']:
+        prediction['class'] = 'Person'
         label = prediction['class']
         xmin = prediction['x']
         ymin = prediction['y']
@@ -34,7 +34,8 @@ def load_images(cv_image, confidence_threshold, overlap_threshold):
         bottom_lx = xmin - prediction['width'] /2
         bottom_ly = ymin - prediction['height'] /2
         draw.rectangle(((top_lx, top_ly), (bottom_lx, bottom_ly)), outline='#00ff22', width=6)
-        draw.text((bottom_lx, bottom_ly), label, fill='white')
+        font = ImageFont.truetype(font_path, size=int(width * 0.3))
+        draw.text((bottom_lx, bottom_ly), label, fill='#00ff22',font=font)
     st.image(pil_img_with_boxes)
 
 
@@ -53,7 +54,9 @@ def main():
     # image_logo = Image.open('/Users/justinpak/code/justinpakzad/head_hunter_frontend/hh icon no bg.png')
     # st.markdown('Counting crowds with confidence since 2023.')
     st.markdown("---")
-    st.markdown("<h6 style='text-align: center; font-family: Roboto !important; color: #ECB056;'>Counting crowds with confidence since 2023.</h6>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center; font-family: Playfair Display, serif; color: #ECB056;'>Counting crowds with confidence since 2023.</h4>", unsafe_allow_html=True)
+
+
 
     st.markdown("---")
     st.write("Upload a photo of your crowd here")
@@ -75,8 +78,7 @@ def main():
             st.image(pil_image)
             if st.button("Predict Please...."):
                 with st.spinner('Detecting Humans......'):
-                    time.sleep(10)
-                load_images(cv_image, confidence_threshold, overlap_threshold)
+                    load_images(cv_image, confidence_threshold, overlap_threshold)
 
     if page == 'Take A Photo':
         img_file_buffer = st.camera_input('Say Cheese')
