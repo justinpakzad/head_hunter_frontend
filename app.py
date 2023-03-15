@@ -5,7 +5,7 @@ from roboflow import Roboflow
 import io
 import time
 import numpy as np
-font_path = '/System/Library/Fonts/Supplemental/Arial.ttf'
+font_path = 'Arial Black.ttf'
 font = ImageFont.truetype(font_path, size=36)
 url = 'https://detect.roboflow.com/crowd_counting/12'
 
