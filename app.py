@@ -54,13 +54,16 @@ def main():
     # image_logo = Image.open('/Users/justinpak/code/justinpakzad/head_hunter_frontend/hh icon no bg.png')
     # st.markdown('Counting crowds with confidence since 2023.')
     st.markdown("---")
-    st.markdown("<h4 style='text-align: center; color: #ECB056; font-family: Ubuntu;'>Counting crowds with confidence since 2023</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center; color: #ECB056; font-family: Sofia Pro ;'>Counting crowds with confidence since 2023</h4>", unsafe_allow_html=True)
 
 # ECB056
     st.markdown("---")
-    st.markdown("<b1 style='text-align: left; font-family: Ubuntu; color: white;'>Upload a photo of your crowd here</b1>", unsafe_allow_html=True)
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.markdown("<h5 style='text-align: left; font-family: Sofia Pro; color: white;'>Upload a photo of your crowd here:</h5>", unsafe_allow_html=True)
     # st.write("Upload a photo of your crowd here")
-
     st.sidebar.header("Settings")
 
     # st.sidebar.header("Settings")
