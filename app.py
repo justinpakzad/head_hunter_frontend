@@ -54,7 +54,7 @@ def main():
     # image_logo = Image.open('/Users/justinpak/code/justinpakzad/head_hunter_frontend/hh icon no bg.png')
     # st.markdown('Counting crowds with confidence since 2023.')
     st.markdown("---")
-    st.markdown("<h4 style='text-align: center; color: #ECB056; font-family: Ubuntu;'>Counting crowds with confidence since 2023.</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center; color: #ECB056; font-family: Ubuntu;'>Counting crowds with confidence since 2023</h4>", unsafe_allow_html=True)
 
 # ECB056
     st.markdown("---")
