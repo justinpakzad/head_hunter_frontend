@@ -97,7 +97,7 @@ def main():
             # st.image(pil_image)
             if st.button("Predict..."):
                 with st.spinner('Hunting heads...'):
-                    load_images(cv_image, confidence_threshold, overlap_threshold)
+                    load_images(cv_image, confidence_threshold)
 
 if __name__ == '__main__':
     main()
