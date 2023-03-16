@@ -42,7 +42,7 @@ def load_images(cv_image, confidence_threshold):
 
 def main():
     icon = Image.open('images/hh icon no bg.png')
-    st.set_page_config(page_icon=icon)
+    st.set_page_config(page_icon=icon,page_title='Head Hunter')
     image_logo_large = Image.open('images/hh logo no bg.png')
     col1, col2, col3, col4 = st.columns(4)
     with col1:
