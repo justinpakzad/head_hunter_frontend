@@ -15,10 +15,10 @@ project = rf.workspace().project('crowd_counting')
 model = project.version(14).model
 
 
-def load_images(cv_image, confidence_threshold, overlap_threshold):
+def load_images(cv_image, confidence_threshold):
     # Make prediction using Roboflow API
-    robo_prediction = model.predict(cv_image, confidence=confidence_threshold*100, overlap=overlap_threshold*100).json()
-    st.markdown(f'<p style="font-size:25px; font-family: Sofia Pro"> {len(robo_prediction["predictions"])} people is our count</p>', unsafe_allow_html=True)
+    robo_prediction = model.predict(cv_image, confidence=confidence_threshold*100).json()
+    st.markdown(f'<center><p style="font-size:25px; font-family: Sofia Pro">{len(robo_prediction["predictions"])} people detected</p></center>', unsafe_allow_html=True)
     pil_img_with_boxes = Image.fromarray(cv2.cvtColor(cv_image, cv2.COLOR_BGR2RGB))
     draw = ImageDraw.Draw(pil_img_with_boxes)
     img_width = cv_image.shape[0]
@@ -41,6 +41,8 @@ def load_images(cv_image, confidence_threshold, overlap_threshold):
 
 
 def main():
+    icon = Image.open('images/hh icon no bg.png')
+    st.set_page_config(page_icon=icon)
     image_logo_large = Image.open('images/hh logo no bg.png')
     col1, col2, col3, col4 = st.columns(4)
     with col1:
@@ -70,7 +72,7 @@ def main():
     # st.sidebar.header("Settings")
     page = st.sidebar.radio('',('Upload Photo','Take A Photo'))
     confidence_threshold = st.sidebar.slider('Confidence threshold:', 0.0, 1.0, 0.3, 0.01)
-    overlap_threshold = st.sidebar.slider('Overlap threshold:', 0.0, 1.0, 0.5, 0.01)
+    # overlap_threshold = st.sidebar.slider('Overlap threshold:', 0.0, 1.0, 0.5, 0.01)
     if page == 'Upload Photo':
         img_file_buffer = st.file_uploader('')
 
@@ -82,7 +84,7 @@ def main():
             st.image(pil_image)
             if st.button("Predict"):
                 with st.spinner('Hunting heads...'):
-                    load_images(cv_image, confidence_threshold, overlap_threshold)
+                    load_images(cv_image, confidence_threshold)
 
     if page == 'Take A Photo':
         img_file_buffer = st.camera_input('Say Cheese')
